@@ -1,6 +1,6 @@
 CREATE TABLE departments
 (
-    dept_no   VARCHAR(6)  NOT NULL,
+    dept_no   VARCHAR(7)  NOT NULL,
     dept_name VARCHAR(30) NOT NULL,
     PRIMARY KEY (dept_no)
 );
@@ -31,6 +31,7 @@ CREATE TABLE salaries
 (
     emp_no INTEGER NOT NULL,
     salary INTEGER,
+    PRIMARY KEY (emp_no),
     CONSTRAINT salaries_pk
         PRIMARY KEY (emp_no),
     CONSTRAINT salaries_employees_emp_no_fk
@@ -41,6 +42,7 @@ CREATE TABLE dept_emp
 (
     emp_no  INTEGER    NOT NULL,
     dept_no VARCHAR(7) NOT NULL,
+    PRIMARY KEY (emp_no, dept_no),
     CONSTRAINT dept_emp_pk
         PRIMARY KEY (emp_no, dept_no),
     CONSTRAINT dept_emp_employees_emp_no_fk
@@ -53,6 +55,7 @@ CREATE TABLE dept_manager
 (
     dept_no VARCHAR(7) NOT NULL,
     emp_no  INTEGER    NOT NULL,
+    PRIMARY KEY (dept_no, emp_no),
     CONSTRAINT dept_manager_pk
         PRIMARY KEY (dept_no, emp_no),
     CONSTRAINT dept_manager_departments_dept_no_fk
